@@ -1,0 +1,62 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+see the frontend is incomplete so mkae frontend and backend sepeeately for deployment purposes and  
+complete 
+ Create a full-stack AI-Powered Mental Wellness Appointment System using the MERN stack (MongoDB, Express.js, React, Node.js) with Bootstrap 5 for UI and Rasa for an AI chatbot. The app should have a User Panel, Therapist Panel, Admin Panel, and an AI Chatbot for mental wellness support. Use only open-source, free, and simple technologies. Ensure a user-friendly, responsive UI with proper functionality and error handling. Follow these specifications:
+
+**Technology Stack:**
+- Backend: Node.js, Express.js, MongoDB (via MongoDB Atlas free tier), Mongoose, JWT for authentication, bcryptjs for password hashing.
+- Frontend: React.js (using Vite), React Router, Axios, Bootstrap 5 (via npm).
+- AI Chatbot: Rasa (open-source NLP) with spaCy for mental health query processing, storing chat summaries in MongoDB.
+- Additional Tools: Vite for React build, dotenv for environment variables, nodemon for server auto-restart, date-fns for calendar scheduling, Socket.IO (optional for real-time chat).
+- Deployment: Compatible with Render (backend) and Vercel (frontend) free tiers.
+
+**Features:**
+1. **User Panel**: Sign up/login, view/filter therapist profiles (availability, specialization), book sessions (calendar-style), chat with AI wellness bot, view booking history/reminders.
+2. **Therapist Panel**: Login, manage profile/time slots, accept/reject appointments, view messages (optional AI-to-human handover).
+3. **Admin Panel**: Manage users/therapists, monitor chatbot usage, view reports (appointments, logs), control AI resources.
+4. **AI Chatbot**: Understands mental health queries, sends motivational quotes/grounding exercises, suggests therapist booking if needed, stores chat summaries in MongoDB.
+
+**Requirements:**
+- Use Bootstrap 5 (installed via npm) for a responsive, user-friendly UI. Avoid Tailwind CSS.
+- Set up MongoDB Atlas for the database.
+- Train a basic Rasa model with mental health intents (e.g., "feeling_sad", "need_therapist").
+- Modularize code: separate backend, frontend, and Rasa chatbot folders.
+- Include error handling in Express routes and validate user inputs.
+- Use Mongoose schemas for User, Therapist, Appointment, and Chat data.
+- Ensure compatibility with Vite for React and avoid common setup errors.
+- Provide a clear project structure with instructions for running locally.
+
+
+
+
+
+
+
+**Output:**
+- Generate a complete project structure with folders for backend, frontend, and Rasa chatbot.
+- Include sample code for key features: user login API, therapist profile display, calendar booking, and chatbot integration.
+- Provide a README.md with setup and run instructions.
+- Avoid generating unnecessary files or complex configurations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Ensure all dependencies are pinned to stable versions to prevent error.complete one feature one by one functionally working and only generate according to the instructions given .
