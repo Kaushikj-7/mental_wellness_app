@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import PlantSVG from "../components/PlantSVG";
 
 const TherapistDashboard = () => {
   const navigate = useNavigate();
@@ -80,26 +81,60 @@ const TherapistDashboard = () => {
   };
 
   return (
-    <div className="min-vh-100 bg-light">
-      {/* Header */}
-      <nav className="navbar navbar-light bg-white mb-4 shadow-sm rounded">
-        <div className="container-fluid d-flex justify-content-between align-items-center">
-          <span className="navbar-brand fw-bold text-primary">
-            MindWell - Therapist Portal
-          </span>
-          <div className="d-flex align-items-center gap-3">
-            <span className="text-secondary">{therapist?.name}</span>
-            <button
-              className="btn btn-outline-secondary btn-sm"
-              onClick={() => {
-                localStorage.clear();
-                navigate("/login");
+    <div
+      className="nature-bg"
+      style={{
+        background: "linear-gradient(135deg, #e6f6e3 0%, #c8e6c9 100%)",
+        minHeight: "100vh",
+      }}
+    >
+      {/* Header with avatar, greeting, and plant illustration */}
+      <nav
+        className="navbar navbar-light bg-white shadow-sm rounded mb-4 px-4 d-flex align-items-center"
+        style={{
+          borderRadius: 24,
+          margin: 24,
+          marginBottom: 32,
+          background: "#e6f6e3",
+        }}
+      >
+        <div className="d-flex align-items-center gap-3">
+          <div
+            className="rounded-circle bg-success d-flex align-items-center justify-content-center"
+            style={{ width: 48, height: 48 }}
+          >
+            <span style={{ color: "#fff", fontSize: 32 }}>
+              <i className="fas fa-user-md"></i>
+            </span>
+          </div>
+          <div>
+            <div
+              className="fw-bold fs-4"
+              style={{
+                fontFamily: "Quicksand, Nunito, sans-serif",
+                color: "#388e3c",
               }}
             >
-              Logout
-            </button>
+              Hello, {therapist?.name || therapist?.username || "Therapist"}!
+            </div>
+            <div className="text-muted" style={{ fontSize: 16 }}>
+              Thank you for supporting wellness 🌿
+            </div>
+          </div>
+          <div className="ms-4">
+            <PlantSVG width={60} height={60} />
           </div>
         </div>
+        <button
+          className="btn btn-outline-success btn-sm ms-auto"
+          onClick={() => {
+            localStorage.clear();
+            navigate("/login");
+          }}
+          style={{ borderRadius: 20 }}
+        >
+          Logout
+        </button>
       </nav>
 
       <div className="container py-4" style={{ maxWidth: 1000 }}>

@@ -40,3 +40,127 @@
 .read-the-docs {
   color: #888;
 }
+
+.nature-bg {
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: 100vh !important;
+  width: 100vw !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 0 !important;
+}
+.nature-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(255,255,255,0.05) !important; /* almost transparent */
+  backdrop-filter: blur(2px) !important;
+  z-index: 0 !important;
+}
+.nature-bg > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Remove solid backgrounds from containers */
+.container, .bg-light, .main-bg, .dashboard-bg {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Glassy card and button styles */
+.card, .wellness-card {
+  background: rgba(255,255,255,0.18) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.12) !important;
+  border: 1.5px solid #a3b18a !important;
+  backdrop-filter: blur(12px) !important;
+}
+.btn, .btn-primary, .wellness-button {
+  background: rgba(53,92,58,0.7) !important;
+  color: #f5f5f5 !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 24px 0 rgba(53,92,58,0.10) !important;
+  opacity: 0.92 !important;
+  backdrop-filter: blur(4px) !important;
+  border: none !important;
+  transition: background 0.2s, box-shadow 0.2s !important;
+}
+.btn:hover, .btn-primary:hover, .wellness-button:hover {
+  background: rgba(163,177,138,0.7) !important;
+  color: #355c3a !important;
+  opacity: 1 !important;
+}
+input, textarea, select {
+  border-radius: 12px !important;
+  border: 1px solid #a3b18a !important;
+  background: rgba(255,255,255,0.18) !important;
+  color: #355c3a !important;
+  backdrop-filter: blur(2px) !important;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: #355c3a !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px #a3b18a !important;
+}
+
+:root {
+  --color-forest: #355c3a;
+  --color-moss: #a3b18a;
+  --color-sky: #b7c9e2;
+  --color-earth: #7c6f57;
+  --color-cloud: #f5f5f5;
+  --color-accent: #e9d985;
+  --color-glass: rgba(255,255,255,0.18);
+  --color-glass-strong: rgba(255,255,255,0.35);
+}
+
+body, html, #root {
+  font-family: 'Quicksand', 'Nunito', sans-serif !important;
+  background: var(--color-cloud) !important;
+  color: var(--color-forest) !important;
+}
+
+.navbar, .navbar-light, .navbar-brand {
+  background: var(--color-glass-strong) !important;
+  color: var(--color-forest) !important;
+  border-bottom: 2px solid var(--color-moss) !important;
+  backdrop-filter: blur(6px);
+}
+
+.text-primary {
+  color: var(--color-forest) !important;
+}
+
+.bg-primary {
+  background: var(--color-forest) !important;
+  color: var(--color-cloud) !important;
+}
+
+.text-accent {
+  color: var(--color-accent) !important;
+}
+
+.bg-accent {
+  background: var(--color-accent) !important;
+  color: var(--color-forest) !important;
+}
+
+.nav-tabs .nav-link.active {
+  background: var(--color-moss) !important;
+  color: var(--color-forest) !important;
+  border: 1px solid var(--color-forest) !important;
+  backdrop-filter: blur(2px);
+}
+
+.nav-tabs .nav-link {
+  color: var(--color-forest) !important;
+  border: 1px solid var(--color-moss) !important;
+  background: var(--color-glass) !important;
+  backdrop-filter: blur(2px);
+}
