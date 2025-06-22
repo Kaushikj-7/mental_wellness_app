@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_ENDPOINTS } from "../config/api";
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -38,11 +39,14 @@ const Chat = () => {
     setInput("");
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/chat", {
+      const response = await axios.post(API_ENDPOINTS.CHAT_MESSAGE, {
         message: input,
-        user: user?.id, // send MongoDB _id
+        user: user.id,
       });
-      setMessages((msgs) => [...msgs, { sender: "bot", text: res.data.reply }]);
+      setMessages((msgs) => [
+        ...msgs,
+        { sender: "bot", text: response.data.reply },
+      ]);
     } catch {
       setMessages((msgs) => [
         ...msgs,
@@ -56,24 +60,21 @@ const Chat = () => {
     }
   };
 
-  // Fetch chat history on mount
+  // Fetch chat history
   useEffect(() => {
-    const fetchHistory = async () => {
-      if (!user?.id) return;
-      try {
-        const res = await axios.get(
-          `http://localhost:5000/api/chat/history/${user.id}`
-        );
-        if (res.data.messages && res.data.messages.length > 0) {
-          setMessages(res.data.messages);
-        }
-      } catch {
-        // ignore
-      }
-    };
-    fetchHistory();
-    // eslint-disable-next-line
-  }, []);
+    if (user) {
+      axios
+        .get(API_ENDPOINTS.CHAT_HISTORY(user.id))
+        .then((res) => {
+          if (res.data.messages) {
+            setMessages(res.data.messages);
+          }
+        })
+        .catch((err) => {
+          console.error("Error fetching chat history:", err);
+        });
+    }
+  }, [user]);
 
   return (
     <div className="container py-4" style={{ maxWidth: 600 }}>

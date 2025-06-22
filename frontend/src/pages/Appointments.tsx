@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_ENDPOINTS } from "../config/api";
 
 const Appointments = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Appointments = () => {
   // Fetch therapists
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/therapists")
+      .get(API_ENDPOINTS.THERAPISTS)
       .then((res) => setTherapists(res.data))
       .catch(() => setTherapists([]));
   }, []);
@@ -35,7 +36,7 @@ const Appointments = () => {
   // Fetch user's appointments
   const fetchAppointments = () => {
     axios
-      .get(`http://localhost:5000/api/appointments/user/${user.id}`)
+      .get(API_ENDPOINTS.USER_APPOINTMENTS(user.id))
       .then((res) => setAppointments(res.data))
       .catch(() => setAppointments([]));
   };
@@ -128,7 +129,7 @@ const Appointments = () => {
     const date = apptDate.toISOString();
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/appointments", {
+      await axios.post(API_ENDPOINTS.APPOINTMENTS, {
         user: user.id,
         therapist: selectedTherapist,
         date,
