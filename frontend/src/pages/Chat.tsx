@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -11,6 +12,16 @@ const Chat = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
+  const navigate = useNavigate();
+
+  // Get user from localStorage
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
 
   useEffect(() => {
     // Scroll to bottom when messages change
@@ -29,6 +40,7 @@ const Chat = () => {
     try {
       const res = await axios.post("http://localhost:5000/api/chat", {
         message: input,
+        user: user?.id, // send MongoDB _id
       });
       setMessages((msgs) => [...msgs, { sender: "bot", text: res.data.reply }]);
     } catch {
@@ -43,6 +55,25 @@ const Chat = () => {
       setLoading(false);
     }
   };
+
+  // Fetch chat history on mount
+  useEffect(() => {
+    const fetchHistory = async () => {
+      if (!user?.id) return;
+      try {
+        const res = await axios.get(
+          `http://localhost:5000/api/chat/history/${user.id}`
+        );
+        if (res.data.messages && res.data.messages.length > 0) {
+          setMessages(res.data.messages);
+        }
+      } catch {
+        // ignore
+      }
+    };
+    fetchHistory();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="container py-4" style={{ maxWidth: 600 }}>

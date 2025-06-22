@@ -10,6 +10,9 @@ import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 import TherapistDashboard from "./pages/TherapistDashboard";
 import Chat from "./pages/Chat";
+import Therapists from "./pages/Therapists";
+import AdminDashboard from "./pages/AdminDashboard";
+import Appointments from "./pages/Appointments";
 
 function App() {
   return (
@@ -20,7 +23,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/user-dashboard" element={<UserDashboard />} />
           <Route path="/therapist-dashboard" element={<TherapistDashboard />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/chat" element={<Chat />} />
+          <Route path="/therapists" element={<Therapists />} />
+          <Route path="/appointments" element={<Appointments />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </div>

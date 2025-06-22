@@ -108,22 +108,6 @@ const Register = () => {
               required
             />
           </div>
-          <div className="mb-3">
-            <label htmlFor="role" className="form-label">
-              I am a
-            </label>
-            <select
-              id="role"
-              className="form-select"
-              value={formData.role}
-              onChange={(e) =>
-                setFormData({ ...formData, role: e.target.value })
-              }
-            >
-              <option value="user">User seeking support</option>
-              <option value="therapist">Licensed Therapist</option>
-            </select>
-          </div>
           {error && <div className="alert alert-danger py-2">{error}</div>}
           {success && <div className="alert alert-success py-2">{success}</div>}
           <button

@@ -29,7 +29,7 @@ complete
 - Use Mongoose schemas for User, Therapist, Appointment, and Chat data.
 - Ensure compatibility with Vite for React and avoid common setup errors.
 - Provide a clear project structure with instructions for running locally.
-
+-creating a  feature in frontend connect it properly to backend  and datybase properly
 
 
 
