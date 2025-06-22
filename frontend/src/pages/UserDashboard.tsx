@@ -374,7 +374,7 @@ const UserDashboard = () => {
   }
 
   return (
-    <div className="nature-bg" style={pastelGradient}>
+    <div>
       <div
         style={{
           minHeight: "100vh",

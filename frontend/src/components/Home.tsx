@@ -51,7 +51,7 @@ const Home: React.FC<HomeProps> = ({ onViewChange }) => {
   ];
 
   return (
-    <div className="nature-bg" style={{ minHeight: "100vh" }}>
+    <div>
       <div className="space-y-12">
         {/* Hero Section */}
         <section className="text-center py-16">

@@ -77,17 +77,45 @@ const Chat = () => {
     }
   }, [user]);
 
+  // Fetch all chat sessions for the user
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(`http://localhost:5000/api/chat/sessions/${user.id}`)
+        .then((res) => {
+          setChatSessions(res.data.sessions || []);
+        })
+        .catch((err) => {
+          console.error("Error fetching chat sessions:", err);
+        });
+    }
+  }, [user]);
+
   const handleNewChat = () => {
-    // Implement the logic to start a new chat
+    setMessages([
+      {
+        sender: "bot",
+        text: "Hello! I am your AI wellness assistant. How can I help you today?",
+      },
+    ]);
+    setCurrentSessionId(null);
   };
 
-  const loadChatSession = (sessionId: string) => {
-    // Implement the logic to load a specific chat session
+  const loadChatSession = (sessionId) => {
+    if (!user) return;
+    axios
+      .get(`http://localhost:5000/api/chat/history/${user.id}/${sessionId}`)
+      .then((res) => {
+        setMessages(res.data.messages || []);
+        setCurrentSessionId(sessionId);
+      })
+      .catch((err) => {
+        console.error("Error loading chat session:", err);
+      });
   };
 
   return (
     <div
-      className="nature-bg"
       style={{
         minHeight: "100vh",
         display: "flex",

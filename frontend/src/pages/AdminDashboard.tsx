@@ -142,7 +142,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="nature-bg min-vh-100 bg-light">
+    <div>
       <nav className="navbar navbar-light bg-white mb-4 shadow-sm rounded">
         <div className="container-fluid d-flex justify-content-between align-items-center">
           <span className="navbar-brand fw-bold text-primary">

@@ -81,7 +81,7 @@ const Chat: React.FC = () => {
   ];
 
   return (
-    <div className="nature-bg" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div className="max-w-4xl mx-auto space-y-6" style={{ zIndex: 1, position: 'relative' }}>
         <div className="text-center">
           <div className="flex items-center justify-center space-x-3 mb-4">

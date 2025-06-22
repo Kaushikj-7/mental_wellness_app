@@ -80,7 +80,6 @@ const Login = () => {
 
   return (
     <div
-      className="nature-bg"
       style={{
         position: "relative",
         minHeight: "100vh",

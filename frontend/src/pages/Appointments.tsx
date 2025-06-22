@@ -155,7 +155,7 @@ const Appointments = () => {
   };
 
   return (
-    <div className="nature-bg" style={{ minHeight: "100vh" }}>
+    <div>
       <div className="container py-4" style={{ maxWidth: 700 }}>
         <div className="card mb-4">
           <div className="card-header fw-bold">Book Appointment</div>

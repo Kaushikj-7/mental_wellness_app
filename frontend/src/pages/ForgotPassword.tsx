@@ -20,7 +20,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="nature-bg" style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
       <div style={{ position: "relative", zIndex: 1 }}>
         <div
           className="card shadow p-4"
