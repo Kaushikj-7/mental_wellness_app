@@ -155,125 +155,127 @@ const Appointments = () => {
   };
 
   return (
-    <div className="container py-4" style={{ maxWidth: 700 }}>
-      <div className="card mb-4">
-        <div className="card-header fw-bold">Book Appointment</div>
-        <div className="card-body">
-          <form onSubmit={handleBook} className="row g-3 align-items-end">
-            <div className="col-md-5">
-              <label className="form-label">Therapist</label>
-              <select
-                className="form-select"
-                value={selectedTherapist}
-                onChange={(e) => setSelectedTherapist(e.target.value)}
-                required
-              >
-                <option value="">Select therapist</option>
-                {therapists.map((t) => (
-                  <option key={t._id} value={t._id}>
-                    {t.name} ({t.email})
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="col-md-3">
-              <label className="form-label">Day</label>
-              <select
-                className="form-select"
-                value={selectedDay}
-                onChange={(e) => setSelectedDay(e.target.value)}
-                required
-                disabled={!availableDays.length}
-              >
-                <option value="">Select day</option>
-                {availableDays.map((day) => (
-                  <option key={day} value={day}>
-                    {day}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="col-md-2">
-              <label className="form-label">Time</label>
-              <select
-                className="form-select"
-                value={selectedTime}
-                onChange={(e) => setSelectedTime(e.target.value)}
-                required
-                disabled={!availableTimes.length}
-              >
-                <option value="">Select time</option>
-                {availableTimes.map((time) => (
-                  <option key={time} value={time}>
-                    {time}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="col-md-2">
-              <label className="form-label">Type</label>
-              <select
-                className="form-select"
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-                required
-              >
-                <option value="Video Call">Video Call</option>
-                <option value="In-Person">In-Person</option>
-                <option value="Phone Call">Phone Call</option>
-              </select>
-            </div>
-            <div className="col-md-2 d-grid">
-              <button
-                className="btn btn-primary"
-                type="submit"
-                disabled={loading || !user}
-              >
-                {loading ? "Booking..." : "Book"}
-              </button>
-            </div>
-            {error && (
-              <div className="col-12 alert alert-danger py-2">{error}</div>
-            )}
-            {success && (
-              <div className="col-12 alert alert-success py-2">{success}</div>
-            )}
-          </form>
-        </div>
-      </div>
-
-      <div className="card">
-        <div className="card-header fw-bold">My Appointments</div>
-        <div className="card-body p-0">
-          <table className="table mb-0">
-            <thead>
-              <tr>
-                <th>Date & Time</th>
-                <th>Therapist</th>
-                <th>Type</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {appointments.length === 0 && (
-                <tr>
-                  <td colSpan={3} className="text-center">
-                    No appointments found.
-                  </td>
-                </tr>
+    <div>
+      <div className="container py-4" style={{ maxWidth: 700 }}>
+        <div className="card mb-4">
+          <div className="card-header fw-bold">Book Appointment</div>
+          <div className="card-body">
+            <form onSubmit={handleBook} className="row g-3 align-items-end">
+              <div className="col-md-5">
+                <label className="form-label">Therapist</label>
+                <select
+                  className="form-select"
+                  value={selectedTherapist}
+                  onChange={(e) => setSelectedTherapist(e.target.value)}
+                  required
+                >
+                  <option value="">Select therapist</option>
+                  {therapists.map((t) => (
+                    <option key={t._id} value={t._id}>
+                      {t.name} ({t.email})
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="col-md-3">
+                <label className="form-label">Day</label>
+                <select
+                  className="form-select"
+                  value={selectedDay}
+                  onChange={(e) => setSelectedDay(e.target.value)}
+                  required
+                  disabled={!availableDays.length}
+                >
+                  <option value="">Select day</option>
+                  {availableDays.map((day) => (
+                    <option key={day} value={day}>
+                      {day}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="col-md-2">
+                <label className="form-label">Time</label>
+                <select
+                  className="form-select"
+                  value={selectedTime}
+                  onChange={(e) => setSelectedTime(e.target.value)}
+                  required
+                  disabled={!availableTimes.length}
+                >
+                  <option value="">Select time</option>
+                  {availableTimes.map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="col-md-2">
+                <label className="form-label">Type</label>
+                <select
+                  className="form-select"
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                  required
+                >
+                  <option value="Video Call">Video Call</option>
+                  <option value="In-Person">In-Person</option>
+                  <option value="Phone Call">Phone Call</option>
+                </select>
+              </div>
+              <div className="col-md-2 d-grid">
+                <button
+                  className="btn btn-primary"
+                  type="submit"
+                  disabled={loading || !user}
+                >
+                  {loading ? "Booking..." : "Book"}
+                </button>
+              </div>
+              {error && (
+                <div className="col-12 alert alert-danger py-2">{error}</div>
               )}
-              {appointments.map((a) => (
-                <tr key={a._id}>
-                  <td>{new Date(a.date).toLocaleString()}</td>
-                  <td>
-                    {a.therapist?.name} ({a.therapist?.email})
-                  </td>
-                  <td>{a.type || "Video Call"}</td>
-                  <td>{a.status}</td>
+              {success && (
+                <div className="col-12 alert alert-success py-2">{success}</div>
+              )}
+            </form>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-header fw-bold">My Appointments</div>
+          <div className="card-body p-0">
+            <table className="table mb-0">
+              <thead>
+                <tr>
+                  <th>Date & Time</th>
+                  <th>Therapist</th>
+                  <th>Type</th>
+                  <th>Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {appointments.length === 0 && (
+                  <tr>
+                    <td colSpan={3} className="text-center">
+                      No appointments found.
+                    </td>
+                  </tr>
+                )}
+                {appointments.map((a) => (
+                  <tr key={a._id}>
+                    <td>{new Date(a.date).toLocaleString()}</td>
+                    <td>
+                      {a.therapist?.name} ({a.therapist?.email})
+                    </td>
+                    <td>{a.type || "Video Call"}</td>
+                    <td>{a.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

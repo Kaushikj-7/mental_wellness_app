@@ -81,7 +81,7 @@ const UserProfile: React.FC = () => {
       );
       setProfile((prev) => ({ ...prev, ...res.data }));
       setSuccess("Profile updated!");
-      setIsEditing(false);
+    setIsEditing(false);
     } catch (err) {
       if (err.response && err.response.data && err.response.data.error) {
         setError("Failed to update profile: " + err.response.data.error);
@@ -155,10 +155,10 @@ const UserProfile: React.FC = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Email
                 </label>
-                <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                  <Mail className="h-5 w-5 text-gray-400" />
-                  <span className="text-gray-800">{profile.email}</span>
-                </div>
+                  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                    <Mail className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-800">{profile.email}</span>
+                  </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -182,13 +182,13 @@ const UserProfile: React.FC = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Address
                 </label>
-                {isEditing ? (
-                  <textarea
-                    value={profile.address}
+              {isEditing ? (
+                <textarea
+                  value={profile.address}
                     onChange={(e) =>
                       handleInputChange("address", e.target.value)
                     }
-                    rows={2}
+                  rows={2}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 ) : (
